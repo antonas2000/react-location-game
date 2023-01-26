@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/react-location-game/static/css/main.44f8b8b5.css",
-    "main.js": "/react-location-game/static/js/main.96b80a10.js",
+    "main.js": "/react-location-game/static/js/main.ced4aa7a.js",
     "index.html": "/react-location-game/index.html",
     "main.44f8b8b5.css.map": "/react-location-game/static/css/main.44f8b8b5.css.map",
-    "main.96b80a10.js.map": "/react-location-game/static/js/main.96b80a10.js.map"
+    "main.ced4aa7a.js.map": "/react-location-game/static/js/main.ced4aa7a.js.map"
   },
   "entrypoints": [
     "static/css/main.44f8b8b5.css",
-    "static/js/main.96b80a10.js"
+    "static/js/main.ced4aa7a.js"
   ]
 }
