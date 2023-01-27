@@ -13,6 +13,8 @@ export default function App() {
         <Container style={{marginTop: '80px'}}>
           <Routes>
             <Route path="/" element={<Main/>}/>
+            <Route path="react-location-game/" element={<Main/>}/>
+            react-location-game/
           </Routes>
         </Container>
       </Router>
