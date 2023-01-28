@@ -16,7 +16,7 @@ export default function Main() {
   return(
     <>
       {(errors.length !== 0) && <Errors errors = {errors} />}
-      <GameCard/>
+      {gameReady && <GameCard/>}
     </>
 
   )
