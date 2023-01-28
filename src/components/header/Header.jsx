@@ -1,30 +1,13 @@
 import {Button, Container, Navbar} from "react-bootstrap";
-import {Link} from "react-router-dom";
-import {useGeolocated} from "react-geolocated";
 import {useGlobalContext} from "../../context/LocationContext";
 import {useEffect, useState} from "react";
+import {isGameReady} from "../../service/LocationAPIService";
 
 
 function Header() {
 
-  const {addErrors, clearErrors, updateLocation} = useGlobalContext();
+  const {addErrors, clearErrors, updateLocation, setGameReady, gameReady} = useGlobalContext();
   const [watchId, setWatchId] = useState();
-/*
-  const { coords, isGeolocationAvailable, isGeolocationEnabled, positionError, timestamp, getPosition} =
-    useGeolocated({
-      positionOptions: {
-        enableHighAccuracy: true,
-        maximumAge: 0,
-        timeout: 60000
-      },
-      watchPosition: true,
-      userDecisionTimeout: null,
-      suppressLocationOnMount: false,
-      geolocationProvider: navigator.geolocation,
-      isOptimisticGeolocationEnabled: true,
-      onError,
-      onSuccess
-    });*/
 
   const options = {
     enableHighAccuracy: true,
@@ -43,6 +26,7 @@ function Header() {
     if (position.coords) {
       updateLocation({latitude: position.coords.latitude, longitude: position.coords.longitude});
     }
+    if(!gameReady) isGameReady().then(() => setGameReady(true));
   }
 
   function getLocation() {
@@ -60,12 +44,6 @@ function Header() {
     navigator.geolocation.clearWatch(watchId);
   }
 
-/*  function onSuccess() {
-    console.log("onSuccess",coords, ' Time: ', new Date(timestamp), positionError);
-    if (coords) updateLocation({latitude: coords.latitude, longitude: coords.longitude})
-  }*/
-
-
   useEffect(startWatchingLocation, []);
 
 /*  if(navigator.geolocation) {
@@ -81,15 +59,13 @@ function Header() {
         <Navbar.Brand>Finders Keepers Loosers Weepers</Navbar.Brand>
         <Navbar.Collapse className="justify-content-end">
         {/*  {!jwtToken && <Link className="nav-link"  style={{marginRight: '10px'}} to="/">Home</Link>}*/}
-          <Button className="nav-link"  style={{marginRight: '10px'}} onClick={getLocation}>Get Location</Button>}
-          <Button className="nav-link"  style={{marginRight: '10px'}} onClick={stopWatchingLocation}>Stop watching</Button>}
+{/*          <Button className="nav-link"  style={{marginRight: '10px'}} onClick={getLocation}>Get Location</Button>}
+          <Button className="nav-link"  style={{marginRight: '10px'}} onClick={stopWatchingLocation}>Stop watching</Button>}*/}
         </Navbar.Collapse>
       </Container>
     </Navbar>
   )
 
 }
-
-
 
 export default Header;

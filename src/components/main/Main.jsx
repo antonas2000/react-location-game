@@ -3,13 +3,14 @@ import Errors from "../errors/Errors";
 import {useEffect} from "react";
 import {useGlobalContext} from "../../context/LocationContext";
 import GameCard from "../gamecard/GameCard";
+import {useNavigate} from "react-router-dom";
 
 export default function Main() {
-  const {errors, clearErrors} = useGlobalContext();
-/*  const navigate = useNavigate();*/
+  const {errors, clearErrors, gameReady} = useGlobalContext();
+  const navigate = useNavigate();
   useEffect(() => {
     clearErrors();
-/*    if (jwtToken) navigate("/adminboard");*/
+    if (!gameReady) navigate("/gamestart");
   }, []);
 
   return(

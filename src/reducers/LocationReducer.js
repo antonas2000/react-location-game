@@ -1,8 +1,8 @@
 import {
   ADD_ERRORS,
-  CLEAR_ERRORS, GET_BOOKS, GET_CHAPTERS,
-  SET_JWT_TOKEN,
-  SET_CURRENT_USER, SET_LOCATION,
+  CLEAR_ERRORS,
+  SET_LOCATION,
+  GAME_READY,
 } from "../constants/Constants";
 
 export default function locationReducer(state, action) {
@@ -13,11 +13,11 @@ export default function locationReducer(state, action) {
         location: action.payload
       };
 
-/*    case GET_CHAPTERS:
+    case GAME_READY:
       return {
         ...state,
-        selectedBook: {bookId: action.payload.bookId, chapters: convertChaptersArrayToBookMap(action.payload.chapters)}
-      };*/
+        location: action.payload
+      };
 
     case ADD_ERRORS:
       return {

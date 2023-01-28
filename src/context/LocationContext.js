@@ -3,13 +3,16 @@ import React from 'react';
 import locationReducer from "../reducers/LocationReducer";
 
 import {
-  addErrorsAction, clearErrorsAction,
+  addErrorsAction, clearErrorsAction, gameReadyAction,
   setLocationAction,
 } from "../actions/LocationActions";
+import {uid} from "uid";
 
 const initialState = {
   location: {},
-  errors: []
+  gameReady: false,
+  errors: [],
+  playerId: uid()
 }
 
 const AppContext = React.createContext();
@@ -30,24 +33,17 @@ function AppProvider({children}) {
     dispatch(setLocationAction(location))
   }
 
-  /*
-   function getBooksAPI() {
-     return getBooks()
-       .then(books => dispatch(getBooksAction(books)))
-       .catch(processError);
-   }
+  function setGameReady(isGameReady) {
+    dispatch(gameReadyAction(isGameReady))
+  }
 
-   function processError(error) {
-     addErrors(error)
-     return Promise.reject(error);
-   }
- */
   return (
     <AppContext.Provider value={{
       ...state,
       addErrors,
       clearErrors,
-      updateLocation
+      updateLocation,
+      setGameReady
     }}>
       {children}
     </AppContext.Provider>
