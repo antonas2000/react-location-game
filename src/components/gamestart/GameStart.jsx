@@ -17,7 +17,7 @@ export default function GameStart() {
 
   return(
     <Container>
-      <Row className="justify-content-end">
+      <Row className="justify-content-center">
         <Button variant="primary"  className='m-2' style={{width: '10em'}} onClick={registerSecret}>
           Press to leave secret here
         </Button>

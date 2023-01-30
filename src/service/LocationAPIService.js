@@ -1,5 +1,5 @@
 
-import {generateData, generateJWTHeader, makeRequest} from "./Utils";
+import {generateData, makeRequest} from "./Utils";
 import {LOCATION_API_URL} from "../constants/Constants";
 
 // Public requests
@@ -15,6 +15,12 @@ export  function saveLocation(playerId, location){
 export function getSecretLocation(playerId) {
   return makeRequest(LOCATION_API_URL, {method: 'GET'}, "/secretlocation/" + playerId);
 }
+
+export function gameOver() {
+  return makeRequest(LOCATION_API_URL, {method: 'GET'}, "/gameended");
+}
+
+
 
 
 

@@ -16,7 +16,7 @@ export default function locationReducer(state, action) {
     case GAME_READY:
       return {
         ...state,
-        location: action.payload
+        gameReady: action.payload
       };
 
     case ADD_ERRORS:

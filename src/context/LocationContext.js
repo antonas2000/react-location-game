@@ -43,7 +43,7 @@ function AppProvider({children}) {
       addErrors,
       clearErrors,
       updateLocation,
-      setGameReady
+      setGameReady,
     }}>
       {children}
     </AppContext.Provider>

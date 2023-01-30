@@ -23,10 +23,18 @@ function Header() {
     clearErrors();
     console.log('locationUpdateReceived');
     console.log(position);
+    console.log('GAME READY', gameReady)
     if (position.coords) {
       updateLocation({latitude: position.coords.latitude, longitude: position.coords.longitude});
     }
-    if(!gameReady) isGameReady().then(() => setGameReady(true));
+    if(!gameReady) {
+      isGameReady()
+        .then((response) => {
+          console.log('RESONSE', response);
+          setGameReady(true)
+        })
+        .catch(error => console.log(error));
+    }
   }
 
   function getLocation() {
